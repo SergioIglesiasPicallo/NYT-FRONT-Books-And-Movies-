@@ -8,15 +8,14 @@ export const FormContainer = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.black};
-  background-image: url("https://img.freepik.com/foto-gratis/camarero-haciendo-delicioso-coctel-refrescante_23-2149093595.jpg");
+  background-image: url("https://image.cnbcfm.com/api/v1/image/106814780-1608603027565-FESTIVE_CAMPFIRE.jpg?v=1608602872&w=1340&h=500&ffmt=webp&vtcrop=y");
   background-size: cover;
 `;
 
 export const Form = styled(DefaultForm)`
   display: flex;
   flex-direction: column;
-  border: 2px solid white;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(116, 0, 1, 0.5);
   border-radius: 10px;
   height: 25rem;
   width: 22.5rem;
@@ -40,7 +39,7 @@ export const Input = styled.input<{ $hasError?: boolean }>`
   padding: 10px;
   margin: 10px;
   border: none; /* eliminar el borde predeterminado */
-  border-bottom: 1px solid ${({ theme }) => theme.colors.white100}; /* agregar borde inferior */
+  border-bottom: 1px solid ${({ theme }) => theme.colors.grey900}; /* agregar borde inferior */
   background: transparent; /* hacer el fondo transparente */
   color: ${({ theme }) =>
     theme.colors.white100}; /* establecer el color de texto */

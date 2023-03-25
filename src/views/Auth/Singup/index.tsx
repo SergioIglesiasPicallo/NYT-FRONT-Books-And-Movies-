@@ -9,28 +9,29 @@ import {
   Label,
   Error,
   InputContainer,
-  Return,
   StyledLink,
+  Return,
 } from "./styles";
 import { Formik, Field } from "formik";
 import { initialValues, validationSchema } from "./constants";
-import { login } from "../../../services/api/auth";
+import { signup } from "../../../services/api/auth";
 import React from "react";
 
-const LoginForm: FC = () => {
+const SignupForm: FC = () => {
   const navigate = useNavigate();
-  
+ 
   const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = async (values: typeof initialValues) => {
-    const loginError = await login(values);
+  const handleSignup = async (values: typeof initialValues) => {
+    const signupError = await signup(values);
 
-    if (!loginError) {
+    if (!signupError) {
       navigate("/landing");
     } else {
-      setError(loginError);
+      setError(signupError);
     }
   };
+
 
   const goToBack = useCallback(() => {
     navigate("/landing");
@@ -40,10 +41,19 @@ const LoginForm: FC = () => {
     <FormContainer>
       <Formik
         validationSchema={validationSchema}
-        onSubmit={handleLogin}
+        onSubmit={handleSignup}
         initialValues={initialValues}
       >
         <Form>
+        <Field name="name">
+            {({ field, meta }: { field: any; meta: any }) => (
+              <InputContainer>
+                <Label>Name</Label>
+                <Input $hasError={!!meta?.error} type="text" {...field} />
+                {meta?.error && <Error>{meta.error}</Error>}
+              </InputContainer>
+            )}
+          </Field>
           <Field name="email">
             {({ field, meta }: { field: any; meta: any }) => (
               <InputContainer>
@@ -62,14 +72,17 @@ const LoginForm: FC = () => {
               </InputContainer>
             )}
           </Field>
-          <FormButton type="submit">Login</FormButton>
-          <Return>
-            <StyledLink href="/signup">Register  </StyledLink>
-          </Return>
+          <FormButton type="submit">SignUp</FormButton>
+          <div style={{ marginTop: "10px" }}>
+            <Return>
+              Already have an account?{" "}
+              <StyledLink href="/login"> login  </StyledLink>
+            </Return>
+          </div>
         </Form>
       </Formik>
     </FormContainer>
   );
 };
 
-export default memo(LoginForm);
+export default memo(SignupForm);
