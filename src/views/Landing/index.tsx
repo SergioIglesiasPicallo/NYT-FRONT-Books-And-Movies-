@@ -7,7 +7,7 @@ import {
   WelcomeButton,
   WelcomeContainer,
   WelcomeMessage,
-} from './styles';
+} from './logic';
 
 const Landing: FC = () => {
   const [isloading, setIsLoading] = useState<boolean>(false);
