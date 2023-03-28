@@ -18,7 +18,7 @@ export type MovieResponse = {
 
 const BASE_API_URL="http://localhost:8000/movies"
 
-export const getCategoryMoviesById = async (
+export const getMoviesById = async (
   id: string
 ): Promise<Movie[]> => {
   try {

@@ -4,21 +4,29 @@ import Movies from ".";
 import { Movie } from "../../models/movies";
 import { getMoviesById } from "../../services/api/movies";
 
-const useLogic = () => {
+type UseLogicReturnType = {
+  isLoading: boolean;
+  handleGetMovie: (id?: string) => Promise<void>;
+  movies: Movie[];
+  categoryName: string;
+  goToBack: () => void;
+};
 
-  const { id: categoryId } = useParams();
-  const [cocktails, setMovies] = useState<Movie[]>([]);
+const useLogic = (): UseLogicReturnType => {
+  const { id: categoryId } = useParams<{ id: string }>();
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
   const handleGetMovie = useCallback(async (id?: string) => {
     if (id) {
       setIsLoading(true);
-      const movies = await getMoviesById(id);
-      console.log(movies);
-      setMovies(movies);
-      setIsLoading(false);
+      const movie = await getMoviesById(id);
+      console.log(movie);
+     setMovies([movie]);
+    setIsLoading(false);
+
     }
   }, []);
 
@@ -27,16 +35,16 @@ const useLogic = () => {
   }, [navigate]);
 
   useEffect(() => {
-    handleGetMovie(movieId);
-  }, [handleGetMovie, movieId]);
+    handleGetMovie(categoryId);
+  }, [handleGetMovie, categoryId]);
 
-    return{
-     isLoading,
-     handleGetMovie,
-     Movies,
-     categoryName:location.state.name,
-     goToBack
-    }
-}
+  return {
+    isLoading,
+    handleGetMovie,
+    movies,
+    categoryName: location.state?.name ?? "",
+    goToBack,
+  };
+};
 
-export default useLogic
+export default useLogic;

@@ -1,15 +1,15 @@
 import { FC, Fragment, memo } from "react";
 import { GeneralContainer, ButtonBack, CategoryContainer, Container } from "./styles";
 import useLogic from "./logic";
-import { BackContainer } from "../Movies/styles";
+import { BackContainer } from "../Categories/styles";
 import CategoryCard from "../../components/GeneralCard";
 import React from "react";
 
-const MovieDetails: FC = () => {
+const CategoryDetails: FC = () => {
   const {
     isLoading,
-    Movies,
-    movieName,
+    movies,
+    categoryName,
     goToBack
   } = useLogic()
   
@@ -18,18 +18,18 @@ const MovieDetails: FC = () => {
     return <p>LOADING</p>;
   }
 
-console.log(movieName)
+  console.log(categoryName)
 
   return (
     <GeneralContainer>
       <BackContainer>
-      <ButtonBack onClick={goToBack}>Go Back!</ButtonBack>
+        <ButtonBack onClick={goToBack}>Go Back!</ButtonBack>
       </BackContainer>
       <CategoryContainer>
-      <div>{movieName}</div>
+        <div>{categoryName}</div>
       </CategoryContainer>
       <Container>
-        {Movies.map((movie) => (
+        {movies.map((movie) => (
           <Fragment key={movie.id}>
             <CategoryCard
               id={movie.id}
@@ -43,4 +43,4 @@ console.log(movieName)
   );
 };
 
-export default memo(MovieDetails);
+export default memo(CategoryDetails);

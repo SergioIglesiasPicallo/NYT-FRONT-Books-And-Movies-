@@ -1,41 +1,49 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Cocktail } from "../../models/cocktails";
-import { getCategoryDrinksById } from "../../services/api/cocktails";
+import BookComponent from ".";
+import { BookModel } from "../../models/books";
+import { getBooksById } from "../../services/api/books";
 
-const useLogic = () => {
+type UseLogicReturnType = {
+  isLoading: boolean;
+  handleGetBook: (id?: string) => Promise<void>;
+  books: BookModel[];
+  bookName: string;
+  goToBack: () => void;
+};
 
-  const { id: categoryId } = useParams();
-  const [cocktails, setCocktails] = useState<Cocktail[]>([]);
+const useLogic = (): UseLogicReturnType => {
+  const { id: categoryId } = useParams<{ id: string }>();
+  const [books, setBooks] = useState<BookModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation<{ name: string }>();
 
-  const handleGetOrdinaryDrink = useCallback(async (id?: string) => {
+  const handleGetBook = useCallback(async (id?: string) => {
     if (id) {
       setIsLoading(true);
-      const drinks = await getCategoryDrinksById(id);
-      console.log(drinks);
-      setCocktails(drinks);
+      const book = await getBooksById(id);
+      console.log(book);
+      setBooks(book);
       setIsLoading(false);
     }
   }, []);
 
   const goToBack = useCallback(() => {
-    navigate("/categories", { replace: true });
+    navigate("/books", { replace: true });
   }, [navigate]);
 
   useEffect(() => {
-    handleGetOrdinaryDrink(categoryId);
-  }, [handleGetOrdinaryDrink, categoryId]);
+    handleGetBook(categoryId);
+  }, [handleGetBook, categoryId]);
 
-    return{
-     isLoading,
-     handleGetOrdinaryDrink,
-     cocktails,
-     categoryName:location.state.name,
-     goToBack
-    }
-}
+  return {
+    isLoading,
+    handleGetBook,
+    books,
+    bookName: location.state?.name ?? "",
+    goToBack,
+  };
+};
 
-export default useLogic
+export default useLogic;

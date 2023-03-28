@@ -8,8 +8,8 @@ import React from "react";
 const CategoryDetails: FC = () => {
   const {
     isLoading,
-    cocktails,
-    categoryName,
+    books,
+    bookName,
     goToBack
   } = useLogic()
   
@@ -18,23 +18,23 @@ const CategoryDetails: FC = () => {
     return <p>LOADING</p>;
   }
 
-console.log(categoryName)
+  console.log(bookName)
 
   return (
     <GeneralContainer>
       <BackContainer>
-      <ButtonBack onClick={goToBack}>Go Back!</ButtonBack>
+        <ButtonBack onClick={goToBack}>Go Back!</ButtonBack>
       </BackContainer>
       <CategoryContainer>
-      <div>{categoryName}</div>
+        <div>{bookName}</div>
       </CategoryContainer>
       <Container>
-        {cocktails.map((cocktail) => (
-          <Fragment key={cocktail.id}>
+        {books.map((book) => (
+          <Fragment key={book.id}>
             <CategoryCard
-              id={cocktail.id}
-              name={cocktail.name}
-              image={cocktail.image}
+              id={book.id}
+              name={book.name}
+              image={book.image}
             />
           </Fragment>
         ))}
