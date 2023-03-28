@@ -1,6 +1,6 @@
 import { BookResponse } from "../services/api/books";
 
-export interface BookModel {
+export type BookModel = {
   name: string;
   image: string;
   id: string;
@@ -11,7 +11,6 @@ export interface BookModel {
   description: string;
   url: string;
 }
-
 
 
 export const normalizeBook = (input: BookResponse) => {
@@ -25,5 +24,3 @@ export const normalizeBook = (input: BookResponse) => {
     url: input?.url || "",
   };
 };
-
-export type Book = ReturnType<typeof normalizeBook>;

@@ -1,6 +1,6 @@
 import { MovieResponse } from "../services/api/movies";
 
-export interface MovieModel = {
+export type MovieInput = {
   id: string;
   created: number;
   title: string;
