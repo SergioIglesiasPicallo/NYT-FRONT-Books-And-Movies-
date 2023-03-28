@@ -24,3 +24,5 @@ export const normalizeBook = (input: BookResponse) => {
     url: input?.url || "",
   };
 };
+
+export type Book = ReturnType<typeof normalizeBook>;

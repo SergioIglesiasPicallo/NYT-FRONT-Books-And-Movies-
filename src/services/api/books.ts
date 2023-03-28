@@ -1,49 +1,36 @@
-import { useCallback, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Book } from "../../models/books";
-import { getBooksById } from "../../services/api/books";
+import { getToken } from "../api/storage";
+import { Book, normalizeBook } from "../../models/books";
 
 
-type UseLogicReturnType = {
-  isLoading: boolean;
-  handleGetBook: (id?: string) => Promise<void>;
-  books: Book[];
-  bookName: string;
-  goToBack: () => void;
+export type BookResponse = {
+    id: string;
+    title: string;
+ author: string;
+  critics: number;
+ isbn: string;
+  publication: Date;
+  description: string;
+  url: string;
+
 };
 
-const useLogic = (): UseLogicReturnType => {
-  const { id: categoryId } = useParams<{ id: string }>();
-  const [books, setBooks] = useState<Book[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const navigate = useNavigate();
-  const location = useLocation();
 
-const handleGetBook = useCallback(async (id?: string) => {
-    if (id) {
-      setIsLoading(true);
-      const books = await getBooksById(id);
-      console.log(books);
-      setBooks(books); 
-      setIsLoading(false);
-    }
-  }, []);
+const BASE_API_URL="http://localhost:8000/books"
 
-  const goToBack = useCallback(() => {
-    navigate("/books", { replace: true });
-  }, [navigate]);
-
-  useEffect(() => {
-    handleGetBook(categoryId);
-  }, [handleGetBook, categoryId]);
-
-  return {
-    isLoading,
-    handleGetBook,
-    books,
-    bookName: location.state?.name ?? "",
-    goToBack,
-  };
+export const getBooksById = async (
+  id: string
+): Promise<Book[]> => {
+  try {
+    const token = getToken();
+    const response = await fetch(`${BASE_API_URL}/${id}`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data: BookResponse[] = await response.json();
+    console.log({ data });
+    return data.map(normalizeBook);
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+  return [];
 };
-
-export default useLogic;

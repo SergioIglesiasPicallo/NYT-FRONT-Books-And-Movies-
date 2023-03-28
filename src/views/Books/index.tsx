@@ -33,8 +33,8 @@ const CategoryDetails: FC = () => {
           <Fragment key={book.id}>
             <CategoryCard
               id={book.id}
-              name={book.name}
-              image={book.image}
+              name={book.title}
+              image={book.url}
             />
           </Fragment>
         ))}
