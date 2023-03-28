@@ -27,7 +27,7 @@ const useLogic = (): UseLogicReturnType => {
       setIsLoading(true);
       const book = await getBooksById(id);
       console.log(book);
-      setBooks(book);
+      setBooks(books => books.concat(normalizeBook(book)));
       setIsLoading(false);
     }
   }, []);
@@ -50,3 +50,7 @@ const useLogic = (): UseLogicReturnType => {
 };
 
 export default useLogic;
+function normalizeBook(book: { id: string; title: string; author: string; publication: Date; isbn: string; description: string; url: string; }[]): ConcatArray<BookModel> {
+  throw new Error("Function not implemented.");
+}
+
