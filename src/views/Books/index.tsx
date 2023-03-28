@@ -1,7 +1,7 @@
 import { FC, Fragment, memo } from "react";
 import { GeneralContainer, ButtonBack, CategoryContainer, Container } from "./styles";
 import useLogic from "./logic";
-import { BackContainer } from "../Categories/styles";
+import { BackContainer } from "../Books/styles";
 import CategoryCard from "../../components/GeneralCard";
 import React from "react";
 

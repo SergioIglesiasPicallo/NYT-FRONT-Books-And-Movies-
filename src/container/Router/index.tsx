@@ -8,9 +8,8 @@ import { getToken } from '../../services/api/storage';
 import { useLocation, Navigate } from 'react-router-dom';
 import ProfileView from '../../views/Profile';
 import Landing from '../../views/Landing';
-import Categories from '../../views/Categories';
-import  from '../../views/CategoryDetails';
-import Random from '../../views/Random';
+import Movies from '../../views/Movies';
+import Books from '../../views/Books';
 import CreationForm from '../../views/Creation';
 import Posts from '../../views/Post';
 import React from 'react';
@@ -51,21 +50,24 @@ const Router: FC = () => {
             <HandleSession>
               <Welcome />
             </HandleSession>
-          }></Route>
+          }
+        />
         <Route
           path="/login"
           element={
             <HandleSession>
               <LoginForm />
             </HandleSession>
-          }></Route>
+          }
+        />
         <Route
           path="/signup"
           element={
             <HandleSession>
               <SignupForm />
             </HandleSession>
-          }></Route>
+          }
+        />
         <Route
           path="/landing"
           element={
@@ -75,37 +77,38 @@ const Router: FC = () => {
                 <Landing />
               </>
             </ProtectedRoutes>
-          }></Route>
+          }
+        />
         <Route
           path="/categories"
           element={
             <ProtectedRoutes>
               <>
                 <Navbar />
-                <Categories />
               </>
             </ProtectedRoutes>
-          }></Route>
+          }
+        />
         <Route
           path="/categories/:id"
           element={
             <ProtectedRoutes>
               <>
                 <Navbar />
-                <OrdinaryDrinks />
               </>
             </ProtectedRoutes>
-          }></Route>
+          }
+        />
         <Route
           path="/random"
           element={
             <ProtectedRoutes>
               <>
                 <Navbar />
-                <Random />
               </>
             </ProtectedRoutes>
-          }></Route>
+          }
+        />
         <Route
           path="/creation"
           element={
@@ -115,7 +118,8 @@ const Router: FC = () => {
                 <CreationForm />
               </>
             </ProtectedRoutes>
-          }></Route>
+          }
+        />
         <Route
           path="/post"
           element={
@@ -125,7 +129,8 @@ const Router: FC = () => {
                 <Posts />
               </>
             </ProtectedRoutes>
-          }></Route>
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -137,8 +142,31 @@ const Router: FC = () => {
             </ProtectedRoutes>
           }
         />
+        <Route
+          path="/movies"
+          element={
+            <ProtectedRoutes>
+              <>
+                <Navbar />
+                <Movies />
+              </>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/books"
+          element={
+            <ProtectedRoutes>
+              <>
+                <Navbar />
+                <Books />
+              </>
+            </ProtectedRoutes>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
 };
+
 export default Router;

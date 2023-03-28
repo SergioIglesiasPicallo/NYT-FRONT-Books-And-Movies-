@@ -17,7 +17,7 @@ export type BookResponse = {
 
 const BASE_API_URL="http://localhost:8000/books"
 
-export const getCategoryBooksById = async (
+export const getBooksById = async (
   id: string
 ): Promise<Book[]> => {
   try {

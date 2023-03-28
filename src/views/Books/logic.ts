@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import BookComponent from ".";
 import { BookModel } from "../../models/books";
 import { getBooksById } from "../../services/api/books";
+
+
 
 type UseLogicReturnType = {
   isLoading: boolean;
@@ -17,7 +18,9 @@ const useLogic = (): UseLogicReturnType => {
   const [books, setBooks] = useState<BookModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-  const location = useLocation<{ name: string }>();
+  const location = useLocation();
+
+
 
   const handleGetBook = useCallback(async (id?: string) => {
     if (id) {
