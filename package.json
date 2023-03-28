@@ -1,7 +1,7 @@
 {
   "name": "nyt-frontend-books-and-movies",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.tsx",
   "repository": "https://github.com/SergioIglesiasPicallo/NYT-FRONT-Books-And-Movies-.git",
   "author": "Sergio Iglesias Picallo",
   "scripts": {
@@ -24,6 +24,7 @@
     "react-jsx-runtime": "^1.0.0-alpha.1",
     "react-router-dom": "^6.9.0",
     "react-script": "^2.0.5",
+    "react-scripts": "^5.0.1",
     "styled": "^1.0.0",
     "styled-components": "^5.3.9",
     "typescript": "^5.0.2",
