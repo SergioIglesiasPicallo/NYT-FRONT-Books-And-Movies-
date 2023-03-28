@@ -9,7 +9,7 @@ import {
   WelcomeMessage,
   WelcomeVideo,
 } from "./styles";
-
+console.log("hola")
 const Welcome: FC = () => {
   return (
     <WelcomeContainer>

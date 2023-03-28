@@ -1,7 +1,8 @@
+import { normalize } from "path";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Movies from ".";
-import { Movie } from "../../models/movies";
+import { Movie, normalizeMovie } from "../../models/movies";
 import { getMoviesById } from "../../services/api/movies";
 
 type UseLogicReturnType = {
@@ -24,7 +25,7 @@ const useLogic = (): UseLogicReturnType => {
       setIsLoading(true);
       const movie = await getMoviesById(id);
       console.log(movie);
-     setMovies([movie]);
+      setMovies(books => books.concat(normalizeMovie(movie)));
     setIsLoading(false);
 
     }
