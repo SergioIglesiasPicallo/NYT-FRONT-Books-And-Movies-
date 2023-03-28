@@ -45,6 +45,7 @@ export const ButtonBack = styled.button`
   cursor: pointer;
   background: linear-gradient(315deg, #ffffff 0%, #ffffff 74%);
 `;
+
 export const BackContainer = styled.div`
   display: flex;
 `;

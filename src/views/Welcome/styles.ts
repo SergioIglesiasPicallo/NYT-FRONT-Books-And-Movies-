@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import theme from '../../styles/theme';
 
 export const WelcomeContainer = styled.div`
   display: flex;
@@ -23,8 +24,8 @@ export const WelcomeVideo = styled.video`
 `;
 
 export const WelcomeMessage = styled.h1`
-  font: ${({ theme }) => theme.font.MyFont};
-  color: ${({ theme }) => theme.colors.black};
+  
+  
   @media only screen and (max-width: 768px) {
     font-size: 3rem;
   }
@@ -35,7 +36,7 @@ export const WelcomeMessage = styled.h1`
 `;
 
 export const RedirectMessage = styled.p`
-  color: ${({ theme }) => theme.colors.black};
+  
   @media only screen and (max-width: 768px) {
     font-size: 1.5rem;
   }

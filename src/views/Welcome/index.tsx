@@ -9,9 +9,10 @@ import {
   WelcomeMessage,
   WelcomeVideo,
 } from "./styles";
-console.log("hola")
+
 const Welcome: FC = () => {
   return (
+    
     <WelcomeContainer>
       <WelcomeVideo
         autoPlay
@@ -22,14 +23,14 @@ const Welcome: FC = () => {
         className="trailer-video"
       />
       <WelcomeMessage>
-        {/* Welcome to Harry Potter Web App */}
+        
         <img
           src="https://fontmeme.com/permalink/230309/9103582b463691b20b9c1339674fb593.png"
           alt=""
         />
       </WelcomeMessage>
       <RedirectMessage>
-        {/* Please login or create an account to continue */}
+        
         <img
           src="https://fontmeme.com/permalink/230309/5e10a18ac97b9018ca027ba36c3641db.png"
           alt=""
@@ -40,7 +41,9 @@ const Welcome: FC = () => {
         <WelcomeButtonSignup to="/signup"><span>SIGNUP</span></WelcomeButtonSignup>
       </ButtonBoxes>
     </WelcomeContainer>
+    
   );
+ // <p>Welcome works</p>)
 };
 
 export default Welcome;
