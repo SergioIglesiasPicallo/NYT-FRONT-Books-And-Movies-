@@ -1,6 +1,6 @@
-import { FC, memo, useCallback } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { FC, memo, useCallback } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Form,
   FormButton,
@@ -11,62 +11,71 @@ import {
   InputContainer,
   Return,
   StyledLink,
-} from "./styles";
-import { Formik, Field } from "formik";
-import { initialValues, validationSchema } from "./constants";
-import { login } from "../../../services/api/auth";
-import React from "react";
+} from './styles';
+import { Formik, Field } from 'formik';
+import { initialValues, validationSchema } from './constants';
+import { login } from '../../../services/api/auth';
 
 const LoginForm: FC = () => {
   const navigate = useNavigate();
-  
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = async (values: typeof initialValues) => {
+  const handleLogin = async (
+    values: typeof initialValues,
+    { setSubmitting, setErrors }: any
+  ) => {
     const loginError = await login(values);
 
-    if (!loginError) {
-      navigate("/landing");
-    } else {
+    if (loginError) {
       setError(loginError);
+      setErrors({ password: loginError }); // agregar el mensaje de error en los errores de Formik
+    } else {
+      navigate('/landing');
     }
+    setSubmitting(false);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const goToBack = useCallback(() => {
-    navigate("/landing");
+    navigate('/landing');
   }, [navigate]);
 
   return (
     <FormContainer>
       <Formik
-        validationSchema={validationSchema}
-        onSubmit={handleLogin}
         initialValues={initialValues}
-      >
-        <Form>
-          <Field name="email">
-            {({ field, meta }: { field: any; meta: any }) => (
-              <InputContainer>
-                <Label>Email</Label>
-                <Input $hasError={!!meta?.error} type="text" {...field} />
-                {meta?.error && <Error>{meta.error}</Error>}
-              </InputContainer>
-            )}
-          </Field>
-          <Field name="password">
-            {({ field, meta }: { field: any; meta: any }) => (
-              <InputContainer>
-                <Label>Password</Label>
-                <Input $hasError={!!meta?.error} {...field} type="password" />
-                {meta?.error && <Error>{meta.error}</Error>}
-              </InputContainer>
-            )}
-          </Field>
-          <FormButton type="submit">Login</FormButton>
-          <Return>
-            <StyledLink href="/signup">Register  </StyledLink>
-          </Return>
-        </Form>
+        validationSchema={validationSchema}
+        onSubmit={handleLogin}>
+        {({ isSubmitting }) => (
+          <Form>
+            <Field name="email">
+              {({ field, meta }: { field: any; meta: any }) => (
+                <InputContainer>
+                  <Label>Email</Label>
+                  <Input $hasError={!!meta?.error} type="text" {...field} />
+                  {meta?.error && <Error>{meta.error}</Error>}
+                </InputContainer>
+              )}
+            </Field>
+            <Field name="password">
+              {({ field, meta }: { field: any; meta: any }) => (
+                <InputContainer>
+                  <Label>Password</Label>
+                  <Input $hasError={!!meta?.error} {...field} type="password" />
+                  {meta?.error && <Error>{meta.error}</Error>}
+                </InputContainer>
+              )}
+            </Field>
+                        <FormButton type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Loading...' : 'Login'}
+            </FormButton>
+            <Return>
+      
+              <StyledLink href="/signup">Go to register</StyledLink>
+            </Return>
+          </Form>
+        )}
       </Formik>
     </FormContainer>
   );

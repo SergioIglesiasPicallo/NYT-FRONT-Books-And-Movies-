@@ -1,48 +1,50 @@
 import { useCallback, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Book } from "../../models/books";
-import { getBooksById } from "../../services/api/books";
+import { getBooks} from "../../services/api/books";
 
 
-type UseLogicReturnType = {
-  isLoading: boolean;
-  handleGetBook: (id?: string) => Promise<void>;
-  books: Book[];
-  bookName: string;
-  goToBack: () => void;
-};
-
-const useLogic = (): UseLogicReturnType => {
-  const { id: categoryId } = useParams<{ id: string }>();
-  const [books, setBooks] = useState<Book[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+const useLogic = () => {
+  const [BooksList, setBooksList] = useState<Book[]>([]);
+  const [isloading, setIsLoading] = useState<boolean>(false);
+  const { id: bookId } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
 
-const handleGetBook = useCallback(async (id?: string) => {
-    if (id) {
-      setIsLoading(true);
-      const books = await getBooksById(id);
-      console.log(books);
-      setBooks(books); 
-      setIsLoading(false);
-    }
+  const getBooksList = useCallback(async () => {
+    setIsLoading(true)
+    const books = await getBooks();
+      setBooksList(books);
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 2000);
   }, []);
 
+  /*
+  const syncData = useCallback(async () => {
+    setIsLoading(true)
+    await syncCategories();
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000);  }, []);
+*/
+  useEffect(() => {
+    getBooksList();
+  }, [getBooksList]);
+
   const goToBack = useCallback(() => {
-    navigate("/books", { replace: true });
+    navigate("/landing", { replace: true });
   }, [navigate]);
 
-  useEffect(() => {
-    handleGetBook(categoryId);
-  }, [handleGetBook, categoryId]);
-
+  const goToDetails = useCallback(() => {
+    navigate(`/books/${bookId}`, { replace: true });
+  }, [bookId, navigate]);
+  
   return {
-    isLoading,
-    handleGetBook,
-    books,
-    bookName: location.state?.name ?? "",
+    isloading,
     goToBack,
+    //syncData,
+    BooksList,
+    goToDetails,
   };
 };
 

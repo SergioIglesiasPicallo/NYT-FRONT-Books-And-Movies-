@@ -1,39 +1,53 @@
 {
-  "name": "nyt-frontend-books-and-movies",
-  "version": "1.0.0",
-  "main": "index.tsx",
-  "repository": "https://github.com/SergioIglesiasPicallo/NYT-FRONT-Books-And-Movies-.git",
-  "author": "Sergio Iglesias Picallo",
+  "name": "cocktailsfrontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.13",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/jest": "^27.0.1",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/react-icons": "^3.0.0",
+    "@types/styled-components": "^5.1.26",
+    "@types/yup": "^0.32.0",
+    "add": "^2.0.6",
+    "components": "^0.1.0",
+    "crypto": "^1.0.1",
+    "font-awesome": "^4.7.0",
+    "formik": "^2.2.9",
+    "jsonwebtoken": "^9.0.0",
+    "prettier": "^2.8.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-jsx-runtime": "^1.0.0-alpha.1",
+    "react-router-dom": "^6.8.2",
+    "react-scripts": "5.0.1",
+    "styled": "^1.0.0",
+    "styled-components": "^5.3.8",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0",
+    "yarn": "^1.22.19",
+    "yup": "^1.0.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "license": "MIT",
-  "dependencies": {
-    "add": "^2.0.6",
-    "components": "^0.1.0",
-    "crypto": "^1.0.1",
-    "formik": "^2.2.9",
-    "jsonwebtoken": "^9.0.0",
-    "node": "^19.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
-    "react-jsx-runtime": "^1.0.0-alpha.1",
-    "react-router-dom": "^6.9.0",
-    "react-script": "^2.0.5",
-    "react-scripts": "^5.0.1",
-    "styled": "^1.0.0",
-    "styled-components": "^5.3.9",
-    "typescript": "^5.0.2",
-    "web-vitals": "^3.3.0",
-    "yarn": "^1.22.19",
-    "yup": "^1.0.2"
-  },
-  "devDependencies": {
-    "@types/styled-components": "^5.1.26"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [

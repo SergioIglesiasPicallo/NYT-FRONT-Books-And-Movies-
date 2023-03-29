@@ -1,46 +1,36 @@
-import { FC, Fragment, memo } from "react";
-import { GeneralContainer, ButtonBack, CategoryContainer, Container } from "./styles";
-import useLogic from "./logic";
-import { BackContainer } from "./styles";
-import CategoryCard from "../../components/GeneralCard";
-import React from "react";
+import { FC, memo } from 'react';
+import MovieCard from '../../components/MovieCard';
+import useLogic from './logic';
+import {BackContainer,ButtonBack,Container,GeneralContainer, Spinner} from './styles';
 
-const CategoryDetails: FC = () => {
-  const {
-    isLoading,
-    movies,
-    categoryName,
-    goToBack
-  } = useLogic()
-  
 
-  if (isLoading) {
-    return <p>LOADING</p>;
+const Movies: FC = () => {
+  const { isloading, goToBack, moviesList, goToDetails } = useLogic();
+
+  if (isloading) {
+    return (
+      <Spinner></Spinner>
+    )
   }
-
-  console.log(categoryName)
 
   return (
     <GeneralContainer>
       <BackContainer>
         <ButtonBack onClick={goToBack}>Go Back!</ButtonBack>
       </BackContainer>
-      <CategoryContainer>
-        <div>{categoryName}</div>
-      </CategoryContainer>
       <Container>
-        {movies.map((movie) => (
-          <Fragment key={movie.id}>
-            <CategoryCard
+        {moviesList.map((movie, index) => (
+          <div key={index}>
+            <MovieCard
               id={movie.id}
-              name={movie.title}
-              image={movie.link}
+              movieTitle={movie.title}
+              onClick={goToDetails}
             />
-          </Fragment>
+          </div>
         ))}
       </Container>
     </GeneralContainer>
   );
 };
 
-export default memo(CategoryDetails);
+export default memo(Movies);

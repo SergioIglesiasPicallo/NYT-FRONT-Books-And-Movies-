@@ -4,7 +4,7 @@ export const GeneralContainer = styled.div`
   padding-top: 20px;
   text-align: center;
   background-color: #282c34;
-  background-image: url('https://img.freepik.com/foto-gratis/coctel-gin-tonic-vaso-sobre-mesa-madera_123827-21895.jpg');
+  background-image: url('https://p4.wallpaperbetter.com/wallpaper/900/861/277/space-1920x1080-earth-wallpaper-preview.jpg');
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   background-size: cover; /* Hace que la imagen cubra todo el fondo sin distorsionarse */
   display: flex;
@@ -15,6 +15,7 @@ export const GeneralContainer = styled.div`
   font-size: calc(10px + 2vmin);
   color: black;
 `;
+
 export const Container = styled.div`
   background: linear-gradient(315deg, #878787 0%, #d3d3d3 74%);
   padding: 5px;
@@ -49,7 +50,7 @@ export const Container = styled.div`
     transition: box-shadow 0.5s ease, transform 0.5s ease;
   }
 `;
-export const Favourite = styled.div`
+export const FavoriteContainer = styled.div`
 color: black;
 font-family: Oswald;
 font-size: 50px;
@@ -57,13 +58,13 @@ background-color: white;
 border-radius: 20px;
 `
 
-export const Spinner = styled.h1``;
 
 export const Info = styled.p`
   color: ${({ theme }) => theme.colors.DementorBlack};
   font-size: 22px;
   font-weight: bold;
 `;
+
 export const MainContainerProfile = styled.div`
   display: flex;
   align-items: center;
@@ -153,3 +154,18 @@ export const ButtonBack = styled.button`
   cursor: pointer;
   background: linear-gradient(315deg, #ffffff 0%, #ffffff 74%);
 `;
+
+export const Spinner = styled.div`
+
+width: 50px;
+height: 50px;
+border: 5px solid #ccc;
+border-top-color: #333;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+
+@keyframes spin {
+to {
+  transform: rotate(360deg);
+}
+` 

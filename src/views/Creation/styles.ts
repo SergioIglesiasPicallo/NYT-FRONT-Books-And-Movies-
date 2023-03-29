@@ -10,7 +10,6 @@ export const GeneralContainer = styled.div`
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  /* background-image: url("https://st2.depositphotos.com/2853475/7544/i/950/depositphotos_75445475-stock-photo-close-up-on-a-cocktail.jpg"); */
 `;
 
 export const BackContainer = styled.div`
@@ -45,7 +44,6 @@ export const FormContainer = styled.div`
 export const Form = styled(DefaultForm)`
   display: flex;
   flex-direction: column;
-  /* background-color: ${({ theme }) => theme.colors.GriffindorRedDark}; */
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   height: 32rem;
@@ -129,7 +127,6 @@ export const Return = styled.p`
 `;
 
 export const StyledLink = styled.a`
-  /* text-decoration: none; */
   color: ${({ theme }) => theme.colors.GriffindorYellow};
 `;
 

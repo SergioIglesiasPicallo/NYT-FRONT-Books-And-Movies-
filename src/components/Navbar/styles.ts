@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const ButtonContainer = styled.div`
+export const ContainerButton = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const Signout = styled.span`
+export const SignoutButton = styled.span`
   color: white;
   font-family: Oswald;
   margin: 10px;
@@ -21,8 +21,7 @@ export const Signout = styled.span`
   }
 `;
 
-
-export const Profile = styled.span`
+export const ProfileButton = styled.span`
   color: white;
   font-family: Oswald;
   margin: 10px;
@@ -36,26 +35,6 @@ export const Profile = styled.span`
     transform: translateY(-5px);
   }
 `;
-/* font-family: Oswald;
-  width: 100px;
-  height: 30px;
-  border-radius: 5px;
-  padding: 20px;
-  margin: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  text-transform: uppercase;
-  font-weight: bold;
-  cursor: pointer;
-  background: linear-gradient(315deg, #E8A808 0%, #DD1103 74%);
-  color: ${({ theme }) => theme.colors.White};
-  border: none;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    transform: translateY(-3px);
-  }
-`; */
 
 export const Tittle = styled(Link)`
   padding-bottom: 16px;
@@ -69,8 +48,8 @@ export const Tittle = styled(Link)`
   }
 `;
 
-export const Logo = styled.div`
-  background-image: url('https://i.ibb.co/6ywQBhV/Logo-COK.png');
+export const Logoimg = styled.div`
+  background-image: url('https://img.freepik.com/free-photo/newspaper-background-concept_23-2149501639.jpg?w=2000');
   background-repeat: no-repeat;
   background-size: cover;
   width: 70px;
@@ -81,14 +60,17 @@ export const CustomNavbar = styled.nav`
   background-color: ${({ theme }) => theme.colors.DemetorBlack100};
   display: flex;
   justify-content: space-between;
-  height: 90px;
+  height: 50px;
   width: 100%;
+  background: linear-gradient(to bottom, white, black);
+
+
 
   //responsive
   @media (max-width: 768px) {
     /* Estilos para pantallas más pequeñas que 768px */
     /* Ajustar tamaño de botones */
-    ${Profile}, ${Signout} {
+    ${ProfileButton}, ${SignoutButton} {
       width: 80px;
       height: 25px;
       font-size: 12px;

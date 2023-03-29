@@ -7,8 +7,8 @@ export const FormContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  background-color: ${({ theme }) => theme.colors.black};
-  background-image: url("https://img.freepik.com/foto-gratis/camarero-haciendo-delicioso-coctel-refrescante_23-2149093595.jpg");
+  background-color: ${({ theme }) => theme.colors.CoolBlue};
+  background-image: url("https://fondosmil.com/fondo/47841.png");
   background-size: cover;
 `;
 
@@ -16,7 +16,7 @@ export const Form = styled(DefaultForm)`
   display: flex;
   flex-direction: column;
   border: 2px solid white;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: ${({ theme }) => theme.colors.CoolBlue} ;
   border-radius: 10px;
   height: 25rem;
   width: 22.5rem;
@@ -25,6 +25,12 @@ export const Form = styled(DefaultForm)`
   margin-right: 1.7rem;
   font-family: Oswald;
   color: ${({ theme }) => theme.colors.white100};
+`;
+
+export const DivError = styled.span`
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
 `;
 
 export const InputContainer = styled.div`
@@ -49,9 +55,9 @@ export const Input = styled.input<{ $hasError?: boolean }>`
   ${({ $hasError, theme }) =>
     $hasError &&
     css`
-      color: ${theme.colors.GriffindorYellow};
+      color: ${theme.colors.grey100};
       border-bottom-color: ${theme.colors
-        .GriffindorYellow}; /* agregar borde inferior amarillo cuando hay un error */
+        .grey100}; /* agregar borde inferior amarillo cuando hay un error */
     `}
 `;
 
@@ -69,14 +75,25 @@ export const FormButton = styled.button`
   margin: 16px;
   padding: 5px;
   font-family: Oswald;
-  background-color: ${({ theme }) => theme.colors.GriffindorGold};
+  background-color: ${({ theme }) => theme.colors.white100};
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+  margin-left: 10px;
+  text-decoration: none;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 0.9;
+  }
 `;
 
 export const FormMessage = styled.p`
   align-items: center;
   display: flex;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.GriffindorYellow};
+  color: ${({ theme }) => theme.colors.white100};
 `;
 
 export const Error = styled.span`
@@ -85,7 +102,7 @@ export const Error = styled.span`
   font-weight: 500;
   margin-top: 8px;
   margin-left: 15px;
-  color: ${({ theme }) => theme.colors.GriffindorYellow};
+  color: ${({ theme }) => theme.colors.danger};
 `;
 
 export const Return = styled.p`
@@ -95,10 +112,9 @@ export const Return = styled.p`
   margin-top: 8px;
   margin-left: 10px;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.GriffindorYellow};
+  color: ${({ theme }) => theme.colors.white100};
 `;
 
 export const StyledLink = styled.a`
-  /* text-decoration: none; */
-  color: ${({ theme }) => theme.colors.GriffindorYellow};
+  color: ${({ theme }) => theme.colors.white100};
 `;

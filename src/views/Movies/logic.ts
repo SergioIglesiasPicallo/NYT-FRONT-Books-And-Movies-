@@ -1,49 +1,50 @@
 import { useCallback, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import Movies from ".";
+import { useNavigate, useParams } from "react-router-dom";
 import { Movie } from "../../models/movies";
-import { getMoviesById } from "../../services/api/movies";
+import { getMovies} from "../../services/api/movies";
 
-type UseLogicReturnType = {
-  isLoading: boolean;
-  handleGetMovie: (id?: string) => Promise<void>;
-  movies: Movie[];
-  categoryName: string;
-  goToBack: () => void;
-};
 
-const useLogic = (): UseLogicReturnType => {
-  const { id: categoryId } = useParams<{ id: string }>();
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+const useLogic = () => {
+  const [moviesList, setMoviesList] = useState<Movie[]>([]);
+  const [isloading, setIsLoading] = useState<boolean>(false);
+  const { id: bookId } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
 
-  const handleGetMovie = useCallback(async (id?: string) => {
-    if (id) {
-      setIsLoading(true);
-      const movie = await getMoviesById(id);
-      console.log(movie);
-     setMovies(movies);
-    setIsLoading(false);
-
-    }
+  const getBooksList = useCallback(async () => {
+    setIsLoading(true)
+    const movies = await getMovies();
+    setMoviesList(movies);
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 2000);
   }, []);
 
+  /*
+  const syncData = useCallback(async () => {
+    setIsLoading(true)
+    await syncCategories();
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 3000);  }, []);
+*/
+  useEffect(() => {
+    getBooksList();
+  }, [getBooksList]);
+
   const goToBack = useCallback(() => {
-    navigate("/movies", { replace: true });
+    navigate("/landing", { replace: true });
   }, [navigate]);
 
-  useEffect(() => {
-    handleGetMovie(categoryId);
-  }, [handleGetMovie, categoryId]);
-
+  const goToDetails = useCallback(() => {
+    navigate(`/books/${bookId}`, { replace: true });
+  }, [bookId, navigate]);
+  
   return {
-    isLoading,
-    handleGetMovie,
-    movies,
-    categoryName: location.state?.name ?? "",
+    isloading,
     goToBack,
+    //syncData,
+    moviesList,
+    goToDetails,
   };
 };
 

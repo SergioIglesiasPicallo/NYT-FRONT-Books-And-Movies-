@@ -1,18 +1,11 @@
 import { FC } from 'react';
 import { Props } from './types';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  ButtonContainer,
-  Logo,
-  Profile,
-  Signout,
-  Tittle,
-} from '../../components/Navbar/styles';
+import {ContainerButton,Logoimg,ProfileButton,SignoutButton,Tittle} from '../../components/Navbar/styles';
 import { CustomNavbar } from './styles';
 import 'font-awesome/css/font-awesome.min.css';
 import { FaUser } from 'react-icons/fa';
 import { FaSignOutAlt } from 'react-icons/fa';
-import React from 'react';
 
 const Navbar: FC<Props> = ({ type = 'list', isProfilePage = false }) => {
   const navigate = useNavigate();
@@ -33,19 +26,19 @@ const Navbar: FC<Props> = ({ type = 'list', isProfilePage = false }) => {
     <>
       <CustomNavbar>
         <Tittle to="/landing">
-          <Logo></Logo>
+          <Logoimg></Logoimg>
         </Tittle>
-        <ButtonContainer>
+        <ContainerButton>
           {!isProfilePage && isCurrentPageProfile ? null: (
-          <Profile onClick={handleProfile}>
+          <ProfileButton onClick={handleProfile}>
             <FaUser />
             Profile
-          </Profile>)}
-          <Signout onClick={handleSignOut}>
+          </ProfileButton>)}
+          <SignoutButton onClick={handleSignOut}>
             <FaSignOutAlt />
             LogOut
-          </Signout>
-        </ButtonContainer>
+          </SignoutButton>
+        </ContainerButton>
       </CustomNavbar>
     </>
   );

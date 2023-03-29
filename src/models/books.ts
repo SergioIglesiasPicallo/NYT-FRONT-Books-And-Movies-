@@ -1,6 +1,6 @@
-import { BookResponse } from "../services/api/books";
+import { BookResponse } from "../services/api/books"
 
-export type BookModel = {
+export type BookInput = {
   name: string;
   image: string;
   id: string;

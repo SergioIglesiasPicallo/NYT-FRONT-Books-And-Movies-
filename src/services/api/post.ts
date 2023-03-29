@@ -1,5 +1,5 @@
 import { normalizePost, Post } from '../../models/post';
-import { getToken } from '../api/storage';
+import { getToken } from '../storage';
 
 export type PostResponse = {
   id: string;

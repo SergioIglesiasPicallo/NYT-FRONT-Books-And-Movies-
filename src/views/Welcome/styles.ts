@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import theme from '../../styles/theme';
 
 export const WelcomeContainer = styled.div`
   display: flex;
@@ -11,21 +10,23 @@ export const WelcomeContainer = styled.div`
   overflow: hidden;
   position: relative;
   z-index: 1;
+  background: url("https://p4.wallpaperbetter.com/wallpaper/900/861/277/space-1920x1080-earth-wallpaper-preview.jpg");
+  background-repeat: no-repeat;
+  background-size: cover
+   
+  
 `;
 
-export const WelcomeVideo = styled.video`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  z-index: -1;
-`;
+export const WelcomeBackground = styled.div`
+position: fixed;
+top: 50%;
+left: 50%;
+z-index: -1;
+`
 
 export const WelcomeMessage = styled.h1`
-  
-  
+  font: ${({ theme }) => theme.font.MyFont};
+  color: ${({ theme }) => theme.colors.white100};
   @media only screen and (max-width: 768px) {
     font-size: 3rem;
   }
@@ -36,7 +37,7 @@ export const WelcomeMessage = styled.h1`
 `;
 
 export const RedirectMessage = styled.p`
-  
+  color: ${({ theme }) => theme.colors.white100};
   @media only screen and (max-width: 768px) {
     font-size: 1.5rem;
   }
@@ -63,10 +64,8 @@ export const WelcomeButtonLogin = styled(Link)`
   align-items: center;
   width: 100px;
   height: 100px;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/9735/9735723.png');
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.white100};
+  border-radius: 30%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
   margin-left: 10px;
@@ -101,10 +100,8 @@ export const WelcomeButtonSignup = styled(Link)`
   align-items: center;
   width: 100px;
   height: 100px;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/9735/9735723.png');
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.white100};
+  border-radius: 30%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
   margin-left: 10px;

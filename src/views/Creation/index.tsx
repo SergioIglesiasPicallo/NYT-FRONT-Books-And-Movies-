@@ -16,7 +16,6 @@ import {
 import { Formik, Field } from 'formik';
 import { initialValues, validationSchema } from './constants';
 import { createPost } from '../../services/api/post';
-import React from 'react';
 
 const CreationForm: FC = () => {
   const navigate = useNavigate();

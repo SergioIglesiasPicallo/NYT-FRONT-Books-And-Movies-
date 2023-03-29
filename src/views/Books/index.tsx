@@ -1,46 +1,36 @@
-import { FC, Fragment, memo } from "react";
-import { GeneralContainer, ButtonBack, CategoryContainer, Container } from "./styles";
-import useLogic from "./logic";
-import { BackContainer } from "../Books/styles";
-import CategoryCard from "../../components/GeneralCard";
-import React from "react";
+import { FC, memo } from 'react';
+import BookCard from '../../components/BookCard';
+import useLogic from './logic';
+import {BackContainer,ButtonBack,Container,GeneralContainer, Spinner} from './styles';
 
-const CategoryDetails: FC = () => {
-  const {
-    isLoading,
-    books,
-    bookName,
-    goToBack
-  } = useLogic()
-  
 
-  if (isLoading) {
-    return <p>LOADING</p>;
+const Books: FC = () => {
+  const { isloading, goToBack, BooksList, goToDetails } = useLogic();
+
+  if (isloading) {
+    return (
+        <Spinner></Spinner>
+    )
   }
-
-  console.log(bookName)
 
   return (
     <GeneralContainer>
       <BackContainer>
         <ButtonBack onClick={goToBack}>Go Back!</ButtonBack>
       </BackContainer>
-      <CategoryContainer>
-        <div>{bookName}</div>
-      </CategoryContainer>
       <Container>
-        {books.map((book) => (
-          <Fragment key={book.id}>
-            <CategoryCard
+        {BooksList.map((book, index) => (
+          <div key={index}>
+            <BookCard
               id={book.id}
-              name={book.title}
-              image={book.url}
+              bookTitle={book.title}
+              onClick={goToDetails}
             />
-          </Fragment>
+          </div>
         ))}
       </Container>
     </GeneralContainer>
   );
 };
 
-export default memo(CategoryDetails);
+export default memo(Books);

@@ -1,4 +1,4 @@
-import { getToken } from '../api/storage';
+import { getToken } from '../storage';
 const BASE_API_URL = 'http://localhost:8000/users';
 export const togglePostFav = async (postId: string) => {
   try {

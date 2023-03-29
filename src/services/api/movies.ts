@@ -1,4 +1,4 @@
-import { getToken } from "../api/storage";
+import { getToken } from "../storage";
 import { Movie, normalizeMovie } from "../../models/movies";
 
 
@@ -37,3 +37,18 @@ export const getMoviesById = async (
 };
 
 
+export const getMovies= async () => {
+  try {
+    const token = getToken();
+    const response = await fetch("http://localhost:8000/categories/type", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data: MovieResponse[] = await response.json();
+    return data.map(normalizeMovie);
+  } catch (error) {
+    console.log((error as Error).message);
+  }
+  return [];
+};

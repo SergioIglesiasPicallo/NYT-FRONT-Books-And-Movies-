@@ -1,36 +1,54 @@
 import styled from 'styled-components';
-
 export const GeneralContainer = styled.div`
   text-align: center;
   padding-top: 60px;
+  background-color: #282c34;
   display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  justify-content: flex-start;
-  background-image: url('https://i.ibb.co/FxKbYzw/peakpx.jpg');
-  background-repeat: repeat-y;
+  background-image: url('https://p4.wallpaperbetter.com/wallpaper/900/861/277/space-1920x1080-earth-wallpaper-preview.jpg');
+  background-repeat: no-repeat;
+  background-size: cover
 `;
-
-export const CategoryContainer = styled.div`
-  padding: 5em;
-  padding-top: 5px;
-  padding-bottom: 25px;
-`;
-
 export const Container = styled.div`
+  width: 70%;
   padding: 5em;
   padding-top: 5px;
   padding-bottom: 25px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr; // Ajusta el tamaño de las columnas del grid
   gap: 24px;
 `;
+export const BackContainer = styled.div`
+  display: flex;
+`;
 
-export const Image = styled.img`
-  width: 175px;
-  height: 250px;
+export const SyncButton = styled.button`
+  width: 90px;
+  height: 50px;
+  border-radius: 5px;
+  margin: 10px;
+  font-family: oswald;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(315deg, #000000 0%, #282c34 74%);
+`;
+
+export const DeleteButton = styled.button`
+  width: 70px;
+  height: 25px;
+  border-radius: 5px;
+  margin: 2px;
+  cursor: pointer;
+  background: linear-gradient(315deg, #9d523c 0%, #f2a65a 74%);
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const ButtonBack = styled.button`
@@ -46,7 +64,16 @@ export const ButtonBack = styled.button`
   background: linear-gradient(315deg, #ffffff 0%, #ffffff 74%);
 `;
 
-export const BackContainer = styled.div`
-  display: flex;
-`;
+export const Spinner = styled.div`
 
+width: 50px;
+height: 50px;
+border: 5px solid #ccc;
+border-top-color: #333;
+border-radius: 50%;
+animation: spin 1s linear infinite;
+
+@keyframes spin {
+to {
+  transform: rotate(360deg);
+}`

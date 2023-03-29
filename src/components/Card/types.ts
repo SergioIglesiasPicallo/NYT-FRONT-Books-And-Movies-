@@ -2,6 +2,6 @@ import { ReactNode } from "react";
 
 export type Props = {
   id:string,
-  category:string,
+  categoryName:string,
   onClick?: (id: string) => void;
 };

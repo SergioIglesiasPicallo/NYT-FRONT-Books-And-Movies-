@@ -1,4 +1,4 @@
-import { setToken } from "../api/storage";
+import { setToken } from "../storage";
 
 const BASE_API_URL = "http://localhost:8000/auth";
 
@@ -13,16 +13,17 @@ export const login = async (values: { email: string; password: string }) => {
 
       body: JSON.stringify({ email: values.email, password: values.password }),
     });
-
+    console.log({response})
     if (response.ok) {
       const token = await response.json();
       setToken(token);
     } else {
-      const errorData = await response.json();
-      error = errorData.error;
+      
+      error = await response.json();
+      console.log({error})
     }
   } catch (error) {
-
+    // eslint-disable-next-line no-ex-assign
     error = (error as Error).message;
     console.log((error as Error).message);
   }
@@ -48,7 +49,7 @@ export const signup = async (values: { name:string, email: string; password: str
       error = errorData.error;
     }
   } catch (error) {
-   
+    // eslint-disable-next-line no-ex-assign
     error = (error as Error).message;
     console.log((error as Error).message);
   }
