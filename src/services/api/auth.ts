@@ -23,7 +23,7 @@ export const login = async (values: { email: string; password: string }) => {
       console.log({error})
     }
   } catch (error) {
-    // eslint-disable-next-line no-ex-assign
+  
     error = (error as Error).message;
     console.log((error as Error).message);
   }

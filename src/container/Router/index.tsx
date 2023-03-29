@@ -18,7 +18,7 @@ import Movies from '../../views/Movies';
 const Router: FC = () => {
   
   const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
-    /*
+   
     const token = getToken();
     const location = useLocation();
 
@@ -26,7 +26,7 @@ const Router: FC = () => {
       return <Navigate to="/" replace state={{ from: location }} />;
     }
 
-    */
+   
     return children;
 
     
@@ -34,7 +34,6 @@ const Router: FC = () => {
 
   const HandleSession = ({ children }: { children: JSX.Element }) => {
    
-   /*
     const token = getToken();
     const location = useLocation();
 
@@ -47,11 +46,11 @@ const Router: FC = () => {
         return <Navigate to="/landing" replace state={{ from: location }} />;
       }
     }
-    */
+   
     return children;
     
   };
-
+  // Between lines 18 and 52 we are potecting the routes by setting a token restriction
   return (
     <BrowserRouter>
       <Routes>
