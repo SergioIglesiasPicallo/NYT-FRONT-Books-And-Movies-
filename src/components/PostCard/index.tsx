@@ -14,7 +14,7 @@ const PostCard: FC<Props> = ({
   const handleToggleFav = useCallback(() => {
     setIsFav(!isFav);
     toggleFav(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+   
   }, [isFav]);
   return (
     <Container>

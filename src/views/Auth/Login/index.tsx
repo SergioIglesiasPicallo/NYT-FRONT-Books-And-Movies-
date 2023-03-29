@@ -18,7 +18,7 @@ import { login } from '../../../services/api/auth';
 
 const LoginForm: FC = () => {
   const navigate = useNavigate();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+ 
   const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (
@@ -29,14 +29,14 @@ const LoginForm: FC = () => {
 
     if (loginError) {
       setError(loginError);
-      setErrors({ password: loginError }); // agregar el mensaje de error en los errores de Formik
+      setErrors({ password: loginError });
     } else {
       navigate('/landing');
     }
     setSubmitting(false);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const goToBack = useCallback(() => {
     navigate('/landing');
   }, [navigate]);

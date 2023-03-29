@@ -18,7 +18,7 @@ import { signup } from "../../../services/api/auth";
 
 const SignupForm: FC = () => {
   const navigate = useNavigate();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  
   const [error, setError] = useState<string | null>(null);
 
   const handleSignup = async (values: typeof initialValues) => {

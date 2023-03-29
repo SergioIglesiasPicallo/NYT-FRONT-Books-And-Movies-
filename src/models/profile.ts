@@ -22,8 +22,6 @@ export type FavoritesInput = {
   title:string,
   postCategory:string,
   image:string,
-  comment:string,
-  user_FK:string,
   createdAt:string,
   // updatedAt:string,
   // postUserFavorites = {
